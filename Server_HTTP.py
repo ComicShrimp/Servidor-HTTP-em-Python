@@ -1,13 +1,11 @@
 # Código para um simples servidor HTTP
 
-import http.server
+import Server_class
+from http.server import HTTPServer, BaseHTTPRequestHandler
 import socketserver
 
 PORT = 8080
 IP = "127.0.0.1"
 
-Handler = http.server.SimpleHTTPRequestHandler
-
-Server_http = socketserver.TCPServer((IP, PORT), Handler)
-print("Servidor na Porta", PORT)
-Server_http.serve_forever()
+http = HTTPServer((IP, PORT), Server_class.SimpleHTTPRequestHandler)
+http.serve_forever()
